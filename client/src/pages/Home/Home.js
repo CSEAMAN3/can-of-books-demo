@@ -1,10 +1,19 @@
 import "./Home.css";
 
-export default function Home() {
+import Book from "../../components/Book/Book";
+
+export default function Home({ books, deleteBook }) {
   return (
     <main>
       <div className="home-main-container container">
-        <h2>Welcome to the home page</h2>
+        <h2 className="books-heading">Book Collection</h2>
+        {books.map((book) => {
+          return (
+            <div className="book-container" key={book._id}>
+              <Book book={book} deleteBook={deleteBook} />
+            </div>
+          );
+        })}
       </div>
     </main>
   );

@@ -14,9 +14,18 @@ Buttons / Links / li / inputs
 Typography
 **************/
 
+.books-heading {
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
 /*************
 Layout
 **************/
+
+.book-container {
+  margin-bottom: 1rem;
+}
 
 /*************
 Media Queries

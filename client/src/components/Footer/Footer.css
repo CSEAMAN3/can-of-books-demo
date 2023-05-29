@@ -18,6 +18,19 @@ Typography
 Layout
 **************/
 
+.footer {
+  background-color: darkslategray;
+  color: var(--wht);
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.footer-container {
+  display: grid;
+  place-items: center;
+}
+
 /*************
 Media Queries
 **************/
