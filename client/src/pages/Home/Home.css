@@ -10,6 +10,10 @@ Images
 Buttons / Links / li / inputs
 **************/
 
+.newBookButton {
+  display: block;
+}
+
 /*************
 Typography
 **************/
@@ -24,7 +28,7 @@ Layout
 **************/
 
 .book-container {
-  margin-bottom: 1rem;
+  margin-bottom: 4rem;
 }
 
 /*************

@@ -13,6 +13,11 @@ import BookDetails from "./pages/BookDetails/BookDetails";
 
 function App() {
   const [books, setBooks] = useState([]);
+  const [newBookForm, setNewBookForm] = useState({
+    title: "",
+    description: "",
+    status: true,
+  });
 
   useEffect(() => {
     getBooks();
@@ -31,7 +36,7 @@ function App() {
     }
 
     try {
-      const API = `http://localhost:8080/books/${book.id}`;
+      const API = `http://localhost:8080/books/${book._id}`;
       await axios.delete(API);
       getBooks();
     } catch (error) {
@@ -39,12 +44,44 @@ function App() {
     }
   }
 
+  async function addBook() {
+    try {
+      const API = `http://localhost:8080/books`;
+      await axios.post(API, newBookForm);
+      getBooks();
+      setNewBookForm({
+        title: "",
+        description: "",
+        status: true,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  function handleNewBookForm(event) {
+    const { name, type, value, checked } = event.target;
+    setNewBookForm({ ...newBookForm, [name]: type === "checked" ? checked : value });
+  }
+
   return (
     <BrowserRouter>
       <div className="App">
         <Header />
         <Routes>
-          <Route path="/" element={<Home books={books} deleteBook={deleteBook} />} />
+          <Route
+            path="/"
+            element={
+              <Home
+                books={books}
+                deleteBook={deleteBook}
+                addBook={addBook}
+                newBookForm={newBookForm}
+                handleNewBookForm={handleNewBookForm}
+                getBooks={getBooks}
+              />
+            }
+          />
           <Route path="/about" element={<About />} />
           <Route path="/book/:id" element={<BookDetails />} />
         </Routes>
