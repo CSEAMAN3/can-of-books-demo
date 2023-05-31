@@ -24,7 +24,7 @@ function App() {
   }, []);
 
   async function getBooks() {
-    const API = `http://localhost:8080/books`;
+    const API = `https://canned-books-demo.onrender.com/books`;
     const Res = await axios.get(API);
     setBooks(Res.data);
   }
@@ -36,7 +36,7 @@ function App() {
     }
 
     try {
-      const API = `http://localhost:8080/books/${book._id}`;
+      const API = `https://canned-books-demo.onrender.com/books/${book._id}`;
       await axios.delete(API);
       getBooks();
     } catch (error) {
@@ -46,7 +46,7 @@ function App() {
 
   async function addBook() {
     try {
-      const API = `http://localhost:8080/books`;
+      const API = `https://canned-books-demo.onrender.com/books`;
       await axios.post(API, newBookForm);
       getBooks();
       setNewBookForm({

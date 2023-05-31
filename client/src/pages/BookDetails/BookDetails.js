@@ -20,7 +20,7 @@ export default function BookDetails() {
 
   async function getBook() {
     try {
-      const API = `http://localhost:8080/books?_id=${id}`;
+      const API = `https://canned-books-demo.onrender.com/books?_id=${id}`;
       const res = await axios.get(API);
       setBook(res.data[0]);
       setForm(res.data[0]);
@@ -32,7 +32,7 @@ export default function BookDetails() {
   async function updateBook(event) {
     event.preventDefault();
     try {
-      const API = `http://localhost:8080/books/${id}`;
+      const API = `https://canned-books-demo.onrender.com/books/${id}`;
       await axios.put(API, form);
       getBook();
     } catch (error) {
